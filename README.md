@@ -116,7 +116,11 @@ Could you explain line by line what the next piece of code is doing ?
 
 <details><summary><b>Answer</b></summary>
 
-![Image](img/practicalImg1_explanation.png "practical Img1_explanation")
+![Image](img/practicalImg1_explanation_part1.png "practicalImg1_explanation_part1")
+
+![Image](img/practicalImg1_explanation_part2.png "practicalImg1_explanation_part*-2")
+
+![Image](img/practicalImg1_explanation_part3.png "practicalImg1 explanation_part3")
 
 </details>
 
