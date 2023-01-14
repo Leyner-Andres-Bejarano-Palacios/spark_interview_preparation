@@ -97,13 +97,21 @@ learningSpark2.0 - pag 30
 Could you explain line by line what the next piece of code is doing ?
 
 ![Image](img/practicalImg1_part1.png "practical Img1_part1")
+
 ![Image](img/practicalImg1_part2.png "practical Img1_part2")
+
 ![Image](img/practicalImg1_part3.png "practical Img1_part3")
+
 ![Image](img/practicalImg1_part4.png "practical Img1_part4")
+
 ![Image](img/practicalImg1_part5.png "practical Img1_part5")
+
 ![Image](img/practicalImg1_part6.png "practical Img1_part6")
+
 ![Image](img/practicalImg1_part7.png "practical Img1_part7")
+
 ![Image](img/practicalImg1_part8.png "practical Img1_part8")
+
 ![Image](img/practicalImg1_part9.png "practical Img1_part9")
 
 <details><summary><b>Answer</b></summary>
