@@ -60,8 +60,32 @@ All transformations are evaluated lazily. That is, their results are not compute
 An action triggers the lazy evaluation of all the recorded transformations.
 
 ![Image](img/exampleTransformationsActions.png "example spark trasnsformations and actions")
+
+![Image](img/TransformationsActions.png "trasnsformations and actions")
 </details>
 
 <details><summary><b>Source</b></summary>
 learningSpark2.0 - pag 28
+</details>
+
+
+### Theorical Question 5
+
+Do you understand the difference between wide and narrow transformations ?
+
+<details><summary><b>Answer</b></summary>
+Transformations can be classified as having either narrow dependencies or wide
+dependencies. Any transformation where a single output partition can be computed
+from a single input partition is a narrow transformation. For example, in the previous
+
+code snippet, filter() and contains() represent narrow transformations because
+they can operate on a single partition and produce the resulting output partition
+without any exchange of data.
+
+However, groupBy() or orderBy() instruct Spark to perform wide transformations,
+where data from other partitions is read in, combined, and written to disk. Since each partition will have its own count of the word that contains the “Spark” word in its row of data, a count ( groupBy() ) will force a shuffle of data from each of the executor’s partitions across the cluster. In this transformation, orderBy() requires output fromother partitions to compute the final aggregation.
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 30
 </details>
