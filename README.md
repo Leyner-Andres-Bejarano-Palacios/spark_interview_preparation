@@ -5,7 +5,7 @@ Throughout my career, I have used spark for a lot of data analysis activities, b
 
 ### Theorical Question 1
 
-In a Spark application what is the driver program and do it get access to resources such as the the Spark executors
+In a Spark application what is the driver program and does it get access to resources such as the the Spark executors ?
 
 <details><summary><b>Answer</b></summary>
 Spark application consists of a driver program that is responsible for orchestrating parallel operations on the Spark cluster. The driver accesses the distributed components in the cluster—the Spark executors and cluster manager—through a SparkSession .
