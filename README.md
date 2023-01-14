@@ -32,7 +32,7 @@ learningSpark2.0 - pag 4
 
 ### Theorical Question 3
 
-do you understand what are the spark stages ?
+Do you understand what are the spark stages ?
 
 <details><summary><b>Answer</b></summary>
 As part of the DAG nodes, stages are created based on what operations can be per‐
@@ -46,7 +46,7 @@ learningSpark2.0 - pag 28
 
 ### Theorical Question 4
 
-do you understand the difference between spark operation actions and spark operation transformation ?
+Do you understand the difference between spark operation actions and spark operation transformation ?
 
 <details><summary><b>Answer</b></summary>
 Transformations, as the name suggests, transform a Spark DataFrame
@@ -88,4 +88,42 @@ where data from other partitions is read in, combined, and written to disk. Sinc
 
 <details><summary><b>Source</b></summary>
 learningSpark2.0 - pag 30
+</details>
+
+## Practical Questions Section
+
+### Practical Question 1
+
+Could you explain line by line what the next piece of code is doing ?
+
+![Image](img/practicalImg1_part1.png "practical Img1_part1")
+![Image](img/practicalImg1_part2.png "practical Img1_part2")
+![Image](img/practicalImg1_part3.png "practical Img1_part3")
+![Image](img/practicalImg1_part4.png "practical Img1_part4")
+![Image](img/practicalImg1_part5.png "practical Img1_part5")
+![Image](img/practicalImg1_part6.png "practical Img1_part6")
+![Image](img/practicalImg1_part7.png "practical Img1_part7")
+![Image](img/practicalImg1_part8.png "practical Img1_part8")
+![Image](img/practicalImg1_part9.png "practical Img1_part9")
+
+<details><summary><b>Answer</b></summary>
+
+![Image](img/practicalImg1_explanation.png "practical Img1_explanation")
+
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 36
+</details>
+
+### Practical Question 2
+
+How would you execute the program ?
+
+<details><summary><b>Answer</b></summary>
+$SPARK_HOME/bin/spark-submit mnmcount.py data/mnm_dataset.csv
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 37
 </details>
