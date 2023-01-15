@@ -179,6 +179,19 @@ Yes, you can create multiple SparkSession s within a single Spark application—
 learningSpark2.0 - pag 92
 </details>
 
+### Theorical Question 11
+
+Do you know why you don't specify an schema when you are working with a parquet file ?
+
+<details><summary><b>Answer</b></summary>
+Unless you are reading from a streaming data source there’s no need to supply the
+schema, because Parquet saves it as part of its metadata.
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 98
+</details>
+
 ## Practical Questions Section
 
 ### Practical Question 1
