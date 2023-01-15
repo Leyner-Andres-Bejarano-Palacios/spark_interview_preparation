@@ -90,6 +90,23 @@ where data from other partitions is read in, combined, and written to disk. Sinc
 learningSpark2.0 - pag 30
 </details>
 
+### Theorical Question 6
+
+Why would you use RDD instead of dataframes ?
+
+<details><summary><b>Answer</b></summary>
+There are two possible reasons:
+
+• Are using a third-party package that’s written using RDDs
+
+• Want to precisely instruct Spark how to do a query
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 75
+</details>
+
+
 ## Practical Questions Section
 
 ### Practical Question 1
@@ -139,3 +156,19 @@ $SPARK_HOME/bin/spark-submit mnmcount.py data/mnm_dataset.csv
 <details><summary><b>Source</b></summary>
 learningSpark2.0 - pag 37
 </details>
+
+### Practical Question 3
+
+Do you understand what this line is doing ?
+
+blogsDF.select(expr("Hits * 2")).show(2)
+
+<details><summary><b>Answer</b></summary>
+It is creating a columns where all of the values of the column "Hits" are multiplied by 2, and it is only showing the first 2 rows
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 55
+</details>
+
+
