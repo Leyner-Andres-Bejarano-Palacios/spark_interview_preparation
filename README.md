@@ -192,6 +192,26 @@ schema, because Parquet saves it as part of its metadata.
 learningSpark2.0 - pag 98
 </details>
 
+### Theorical Question 12
+
+Do you think serializing and deserialing data would make Dataset or Dataframe give a greater performance ?
+
+<details><summary><b>Answer</b></summary>
+In “DataFrames Versus Datasets” on page 74 in Chapter 3, we outlined some of the
+benefits of using Datasets—but these benefits come at a cost. As noted in the
+preceding section, when Datasets are passed to higher-order functions such as fil
+ter() , map() , or flatMap() that take lambdas and functional arguments, there is a
+cost associated with deserializing from Spark’s internal Tungsten format into the JVM
+object.
+
+Compared to other serializers used before encoders were introduced in Spark, this
+cost is minor and tolerable. However, over larger data sets and many queries, this cost accrues and can affect performance.
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 170
+</details>
+
 ## Practical Questions Section
 
 ### Practical Question 1
