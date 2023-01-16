@@ -212,6 +212,85 @@ cost is minor and tolerable. However, over larger data sets and many queries, th
 learningSpark2.0 - pag 170
 </details>
 
+### Theorical Question 13
+
+How would you change the properties/config files of spark ?
+
+<details><summary><b>Answer</b></summary>
+There are three ways you can get and set Spark properties. The first is through a set of configuration files. In your deployment’s $SPARK_HOME directory (where you installed
+Spark), there are a number of config files: conf/spark-defaults.conf.template, conf/
+log4j.properties.template, and conf/spark-env.sh.template. Changing the default values in these files and saving them without the .template suffix instructs Spark to use these new values.
+
+![Image](img/ChangingConfigFiles.png "Changing Config Files")
+
+![Image](img/ChangingConfigFilesOption3.png "Changing Config Files Option3")
+
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 173
+</details>
+
+### Theorical Question 14
+
+How would you avoid job failures due to resource starvation or gradual performance degradation ?
+
+<details><summary><b>Answer</b></summary>
+
+When you specify compute resources as command-line arguments to spark-submit ,
+as we did earlier, you cap the limit. This means that if more resources are needed later as tasks queue up in the driver due to a larger than anticipated workload, Spark cannot accommodate or allocate extra resources.
+If instead you use Spark’s dynamic resource allocation configuration, the Spark driver can request more or fewer compute resources as the demand of large workloads flows and ebbs. 
+In scenarios where your workloads are dynamic—that is, they vary in their
+demand for compute capacity—using dynamic allocation helps to accommodate sud‐
+den peaks.
+One use case where this can be helpful is streaming, where the data flow volume may
+be uneven. Another is on-demand data analytics, where you might have a high vol‐
+ume of SQL queries during peak hours. Enabling dynamic resource allocation allows
+Spark to achieve better utilization of resources, freeing executors when not in use and acquiring new ones when needed.
+
+![Image](img/increasingResources.png "increasing Resources")
+
+![Image](img/increasingResourcesPart2.png "increasing Resources Part 2")
+
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 177
+</details>
+
+
+### Theorical Question 15
+
+Do you understand the difference between cache() and persist() ?
+
+<details><summary><b>Answer</b></summary>
+
+![Image](img/cachingData.png "caching Data")
+
+![Image](img/cachingDataPart2.png "caching Data Part 2")
+
+![Image](img/cachingDataPart3.png "caching Data Part 3")
+
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 177
+</details>
+
+### Theorical Question 16
+
+When should you cache and not to cache data ?
+
+<details><summary><b>Answer</b></summary>
+
+![Image](img/whenCache.png "when cache")
+
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 187
+</details>
+
 ## Practical Questions Section
 
 ### Practical Question 1
