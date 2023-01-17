@@ -291,6 +291,21 @@ When should you cache and not to cache data ?
 learningSpark2.0 - pag 187
 </details>
 
+### Theorical Question 17
+
+When do you use broadcast hash join ?
+
+<details><summary><b>Answer</b></summary>
+
+![Image](img/whenToUseBroadCastJoin.png "when To Use BroadCast Join")
+
+</details>
+
+<details><summary><b>Source</b></summary>
+learningSpark2.0 - pag 188
+</details>
+
+
 ## Practical Questions Section
 
 ### Practical Question 1
