@@ -416,3 +416,34 @@ ctrl + f "Running the Examples and Shell"
 <details><summary><b>Source</b></summary>
 https://spark.apache.org/docs/latest/
 </details>
+
+### Practical Question 7
+
+How would you connect spark to hadoop ?
+
+<details><summary><b>Answer</b></summary>
+
+https://spark.apache.org/docs/latest/hadoop-provided.html
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/hadoop-provided.html
+</details>
+
+### Practical Question 8
+
+How would you deploy an application that depended on a special library both for python and java ?
+
+<details><summary><b>Answer</b></summary>
+
+ctrl + f "Bundling Your Application’s Dependencies"
+
+https://spark.apache.org/docs/latest/submitting-applications.html
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/submitting-applications.html
+</details>
+
