@@ -400,3 +400,19 @@ How would you view metadata in spark ?
 <details><summary><b>Source</b></summary>
 learningSpark2.0 - pag 93
 </details>
+
+### Practical Question 6
+
+How would you run spark ?
+
+<details><summary><b>Answer</b></summary>
+
+in this page https://spark.apache.org/docs/latest/
+
+ctrl + f "Running the Examples and Shell"
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/
+</details>
