@@ -463,3 +463,86 @@ https://spark.apache.org/docs/latest/submitting-applications.html
 https://spark.apache.org/docs/latest/submitting-applications.html
 </details>
 
+### Practical Question 10
+
+A long-running application (e.g. streaming) can bring a huge single event log file which may cost a lot to maintain and also requires a bunch of resource to replay per each update in Spark History Server.
+
+What would you handle it ?
+
+<details><summary><b>Answer</b></summary>
+
+ctrl + f "Applying compaction on rolling event log files"
+
+https://spark.apache.org/docs/latest/monitoring.html
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/monitoring.html
+</details>
+
+
+### Practical Question 11
+
+Whay metrics do you have available through the rest-api ?
+
+<details><summary><b>Answer</b></summary>
+
+https://spark.apache.org/docs/latest/monitoring.html#rest-api
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/monitoring.html#rest-api
+</details>
+
+### Practical Question 12
+
+Do you know what parallelize is used for ?
+
+<details><summary><b>Answer</b></summary>
+
+Parallelized collections are created by calling SparkContext’s parallelize method on an existing iterable or collection in your driver program. The elements of the collection are copied to form a distributed dataset that can be operated on in parallel. For example, here is how to create a parallelized collection holding the numbers 1 to 5:
+
+data = [1, 2, 3, 4, 5]
+distData = sc.parallelize(data)
+
+Once created, the distributed dataset (distData) can be operated on in parallel. For example, we can call distData.reduce(lambda a, b: a + b) to add up the elements of the list. We describe operations on distributed datasets later on.
+
+One important parameter for parallel collections is the number of partitions to cut the dataset into. Spark will run one task for each partition of the cluster. Typically you want 2-4 partitions for each CPU in your cluster. Normally, Spark tries to set the number of partitions automatically based on your cluster. However, you can also set it manually by passing it as a second parameter to parallelize (e.g. sc.parallelize(data, 10)). Note: some places in the code use the term slices (a synonym for partitions) to maintain backward compatibility.
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/rdd-programming-guide.html
+</details>
+
+### Practical Question 13
+
+How would you print the elements of the RDD
+
+<details><summary><b>Answer</b></summary>
+
+Another common idiom is attempting to print out the elements of an RDD using rdd.foreach(println) or rdd.map(println). On a single machine, this will generate the expected output and print all the RDD’s elements. However, in cluster mode, the output to stdout being called by the executors is now writing to the executor’s stdout instead, not the one on the driver, so stdout on the driver won’t show these! To print all elements on the driver, one can use the collect() method to first bring the RDD to the driver node thus: rdd.collect().foreach(println). This can cause the driver to run out of memory, though, because collect() fetches the entire RDD to a single machine; if you only need to print a few elements of the RDD, a safer approach is to use the take(): rdd.take(100).foreach(println).
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/rdd-programming-guide.html
+</details>
+
+### Practical Question 14
+
+Do you know the difference between map() y flatMap()
+
+<details><summary><b>Answer</b></summary>
+
+map(func):	Return a new distributed dataset formed by passing each element of the source through a function func.
+
+flatMap(func)	Similar to map, but each input item can be mapped to 0 or more output items (so func should return a Seq rather than a single item).
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/rdd-programming-guide.html
+</details>
