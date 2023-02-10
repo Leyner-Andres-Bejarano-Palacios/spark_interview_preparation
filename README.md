@@ -447,3 +447,19 @@ https://spark.apache.org/docs/latest/submitting-applications.html
 https://spark.apache.org/docs/latest/submitting-applications.html
 </details>
 
+### Practical Question 9
+
+what options for launching this do you know ?
+
+<details><summary><b>Answer</b></summary>
+
+ctrl + f "Launching Applications with spark-submit"
+
+https://spark.apache.org/docs/latest/submitting-applications.html
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/submitting-applications.html
+</details>
+
