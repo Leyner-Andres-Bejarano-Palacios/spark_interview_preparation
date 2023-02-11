@@ -713,3 +713,38 @@ https://www.waitingforcode.com/apache-spark-streaming/spark-streaming-checkpoint
 <details><summary><b>Source</b></summary>
 https://www.waitingforcode.com/apache-spark-streaming/spark-streaming-checkpointing-and-write-ahead-logs/read
 </details>
+
+### Practical Question 24
+
+How do you deal with sliding event-time window in spark?
+
+<details><summary><b>Answer</b></summary>
+
+Since this windowing is similar to grouping, in code, you can use groupBy() and window() operations to express windowed aggregations. 
+
+words = ...  # streaming DataFrame of schema { timestamp: Timestamp, word: String }
+
+windowedCounts = words.groupBy(
+    window(words.timestamp, "10 minutes", "5 minutes"),
+    words.word
+).count()
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#window-operations-on-event-time
+</details>
+
+### Practical Question 25
+
+How do you deal with data arriving late in spark?
+
+<details><summary><b>Answer</b></summary>
+
+https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#handling-late-data-and-watermarking
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#handling-late-data-and-watermarking
+</details>
