@@ -546,3 +546,170 @@ flatMap(func)	Similar to map, but each input item can be mapped to 0 or more out
 <details><summary><b>Source</b></summary>
 https://spark.apache.org/docs/latest/rdd-programming-guide.html
 </details>
+
+
+### Practical Question 15
+
+Do you know the difference between persist and cache()?
+
+<details><summary><b>Answer</b></summary>
+
+The difference between cache() and persist() is that using cache() the default storage level is MEMORY_ONLY while using persist() we can use various storage levels
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://data-flair.training/blogs/apache-spark-rdd-persistence-caching/#:~:text=We%20can%20persist%20the%20RDD,tool%20for%20an%20interactive%20algorithm.
+</details>
+
+
+### Practical Question 16
+
+Do you know how to create broadcast variables?
+
+<details><summary><b>Answer</b></summary>
+
+Broadcast variables allow the programmer to keep a read-only variable cached on each machine rather than shipping a copy of it with tasks. They can be used, for example, to give every node a copy of a large input dataset in an efficient manner. Spark also attempts to distribute broadcast variables using efficient broadcast algorithms to reduce communication cost.
+
+Spark actions are executed through a set of stages, separated by distributed “shuffle” operations. Spark automatically broadcasts the common data needed by tasks within each stage. The data broadcasted this way is cached in serialized form and deserialized before running each task. This means that explicitly creating broadcast variables is only useful when tasks across multiple stages need the same data or when caching the data in deserialized form is important.
+
+Broadcast variables are created from a variable v by calling SparkContext.broadcast(v). The broadcast variable is a wrapper around v, and its value can be accessed by calling the value method. The code below shows this:
+
+Scala
+Java
+Python
+>>> broadcastVar = sc.broadcast([1, 2, 3])
+<pyspark.broadcast.Broadcast object at 0x102789f10>
+
+>>> broadcastVar.value
+[1, 2, 3]
+After the broadcast variable is created, it should be used instead of the value v in any functions run on the cluster so that v is not shipped to the nodes more than once. In addition, the object v should not be modified after it is broadcast in order to ensure that all nodes get the same value of the broadcast variable (e.g. if the variable is shipped to a new node later).
+
+To release the resources that the broadcast variable copied onto executors, call .unpersist(). If the broadcast is used again afterwards, it will be re-broadcast. To permanently release all resources used by the broadcast variable, call .destroy(). The broadcast variable can’t be used after that. Note that these methods do not block by default. To block until resources are freed, specify blocking=true when calling them.
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://data-flair.training/blogs/apache-spark-rdd-persistence-caching/#:~:text=We%20can%20persist%20the%20RDD,tool%20for%20an%20interactive%20algorithm.
+</details>
+
+
+### Practical Question 16
+
+Do you know how to create accumulatores?
+
+<details><summary><b>Answer</b></summary>
+
+read this link
+
+https://spark.apache.org/docs/latest/rdd-programming-guide.html#accumulators
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/rdd-programming-guide.html#accumulators
+</details>
+
+### Practical Question 17
+
+Do you know the difference between dataset and dataframe?
+
+<details><summary><b>Answer</b></summary>
+
+A Dataset is a distributed collection of data. Dataset is a new interface added in Spark 1.6 that provides the benefits of RDDs (strong typing, ability to use powerful lambda functions) with the benefits of Spark SQL’s optimized execution engine. A Dataset can be constructed from JVM objects and then manipulated using functional transformations (map, flatMap, filter, etc.). The Dataset API is available in Scala and Java. Python does not have the support for the Dataset API. But due to Python’s dynamic nature, many of the benefits of the Dataset API are already available (i.e. you can access the field of a row by name naturally row.columnName). The case for R is similar.
+
+A DataFrame is a Dataset organized into named columns. It is conceptually equivalent to a table in a relational database or a data frame in R/Python, but with richer optimizations under the hood. DataFrames can be constructed from a wide array of sources such as: structured data files, tables in Hive, external databases, or existing RDDs. The DataFrame API is available in Scala, Java, Python, and R. In Scala and Java, a DataFrame is represented by a Dataset of Rows. In the Scala API, DataFrame is simply a type alias of Dataset[Row]. While, in Java API, users need to use Dataset<Row> to represent a DataFrame.
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/sql-getting-started.html
+</details>
+
+### Practical Question 18
+
+how would you overwrite a datasource when writting a dataframe?
+
+<details><summary><b>Answer</b></summary>
+
+By using save.Mode overwritte
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html#save-modes
+</details>
+
+### Practical Question 19
+
+in spark do you understand what bucketing means?
+
+<details><summary><b>Answer</b></summary>
+
+https://towardsdatascience.com/best-practices-for-bucketing-in-spark-sql-ea9f23f7dd53
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://towardsdatascience.com/best-practices-for-bucketing-in-spark-sql-ea9f23f7dd53
+</details>
+
+### Practical Question 20
+
+How would you encrypt a column in spark ?
+
+<details><summary><b>Answer</b></summary>
+
+https://spark.apache.org/docs/latest/sql-data-sources-parquet.html#columnar-encryption
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/sql-data-sources-parquet.html#columnar-encryption
+</details>
+
+### Practical Question 21
+
+What are hints used for in spark ?
+
+<details><summary><b>Answer</b></summary>
+
+The join strategy hints, namely BROADCAST, MERGE, SHUFFLE_HASH and SHUFFLE_REPLICATE_NL, instruct Spark to use the hinted strategy on each specified relation when joining them with another relation. For example, when the BROADCAST hint is used on table ‘t1’, broadcast join (either broadcast hash join or broadcast nested loop join depending on whether there is any equi-join key) with ‘t1’ as the build side will be prioritized by Spark even if the size of table ‘t1’ suggested by the statistics is above the configuration spark.sql.autoBroadcastJoinThreshold.
+
+When different join strategy hints are specified on both sides of a join, Spark prioritizes the BROADCAST hint over the MERGE hint over the SHUFFLE_HASH hint over the SHUFFLE_REPLICATE_NL hint. When both sides are specified with the BROADCAST hint or the SHUFFLE_HASH hint, Spark will pick the build side based on the join type and the sizes of the relations.
+
+Note that there is no guarantee that Spark will choose the join strategy specified in the hint since a specific strategy may not support all join types.
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/sql-performance-tuning.html#join-strategy-hints-for-sql-queries
+</details>
+
+### Practical Question 22
+
+Do you know what Adaptive Query Execution is?
+
+<details><summary><b>Answer</b></summary>
+
+Adaptive Query Execution (AQE) is an optimization technique in Spark SQL that makes use of the runtime statistics to choose the most efficient query execution plan, which is enabled by default since Apache Spark 3.2.0. Spark SQL can turn on and off AQE by spark.sql.adaptive.enabled as an umbrella configuration. As of Spark 3.0, there are three major features in AQE: including coalescing post-shuffle partitions, converting sort-merge join to broadcast join, and skew join optimization.
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://spark.apache.org/docs/latest/sql-performance-tuning.html#join-strategy-hints-for-sql-queries
+</details>
+
+### Practical Question 23
+
+Do you understand how checkpointing and write ahead log help spark structured straming acomplish fault-tolerance?
+
+<details><summary><b>Answer</b></summary>
+
+https://www.waitingforcode.com/apache-spark-streaming/spark-streaming-checkpointing-and-write-ahead-logs/read
+
+</details>
+
+<details><summary><b>Source</b></summary>
+https://www.waitingforcode.com/apache-spark-streaming/spark-streaming-checkpointing-and-write-ahead-logs/read
+</details>
